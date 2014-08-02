@@ -26,7 +26,7 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
     socket.on('chat message', function(msg){
         var from = socket.request.connection.remoteAddress.toString();
-        socket.emit('chat message', from + ': ' + msg);
+        io.emit('chat message', from + ': ' + msg);
         console.log(from + ' ' + msg);
     });
 });
